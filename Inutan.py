@@ -7,7 +7,7 @@ import os
 
 #Defines the dimensions and position of the main window
 root = Tk()
-root.config(bg="#fbc681")
+root.config(bg="#d1cfe2")
 root.title("Student Information System")
 root.resizable(0,0)
 root.geometry("500x625")
@@ -70,15 +70,15 @@ def showList(*args):
                         #If seachbar is used, filters the list according to the string in the searchbar
                         if(line['id#'].startswith(searchword) or (line['name'].lower()).startswith(searchword.lower())):
                                 #Widgets for displaying list of students
-                                currFrame = Frame(myFrame, bg="white", highlightbackground="#e38307", highlightthickness=3, height=100, width=470)
+                                currFrame = Frame(myFrame, bg="#d1cfe2", highlightbackground="#d1cfe2", highlightthickness=3, height=100, width=470)
                                 currFrame.grid(row=i, column=0, padx=5, pady=5)
                                 currFrame.propagate(0)
 
-                                picFrame = Label(currFrame, image=pic, height=90, width=90, bg="white")
+                                picFrame = Label(currFrame, image=pic, height=90, width=90, bg="#d1cfe2")
                                 picFrame.pack(side=LEFT, padx=(7,0), pady=7)
                                 picFrame.image=pic
                                     
-                                textFrame = Frame(currFrame, height=90, width=360, bg="white")
+                                textFrame = Frame(currFrame, height=90, width=360, bg="#d1cfe2")
                                 textFrame.pack(side=LEFT, padx=7, pady=7)
                                 textFrame.propagate(0)
                                     
@@ -86,17 +86,17 @@ def showList(*args):
                                                 "\nNAME\t: "+line['name']+
                                                 "\nCOURSE\t: "+line['course']+
                                                 "\nYEAR\t: "+line['year']+
-                                                "\nGENDER\t: "+line['gender'],justify=LEFT, bg="white",anchor="w")
+                                                "\nGENDER\t: "+line['gender'],justify=LEFT, bg="#d1cfe2",anchor="w")
                                 info.pack(side=LEFT)
                                 
-                                thisFrame = Frame(textFrame,bg="white")
+                                thisFrame = Frame(textFrame,bg="#d1cfe2")
                                 thisFrame.pack(side=RIGHT)
                                 #Creates an instance of the line['id#'] variable so that each button will have different values
-                                delete = Button(thisFrame, image=button_delete, borderwidth=0,bg='white', command=lambda x=line['id#']:deleteStudent(x))
+                                delete = Button(thisFrame, image=button_delete, borderwidth=0,bg='#d1cfe2', command=lambda x=line['id#']:deleteStudent(x))
                                 #Keeps a reference of the image to avoid garbage collection
                                 delete.image=button_delete
                                 delete.pack(side=BOTTOM, padx=5,pady=2)
-                                edit = Button(thisFrame, image=button_update, borderwidth=0,bg='white', command=lambda x=line:info_window("edit",x))
+                                edit = Button(thisFrame, image=button_update, borderwidth=0,bg='#d1cfe2', command=lambda x=line:info_window("edit",x))
                                 edit.image=button_update
                                 edit.pack(side=TOP, padx=5,pady=2)
                         i+=1
@@ -146,22 +146,22 @@ def info_window(command,student):
                 
         #Creates a new window
         infoWindow = Toplevel()
-        infoWindow.configure(bg="#fbc681")
+        infoWindow.configure(bg="#d1cfe2")
         infoWindow.title("Add Student" if command == "add" else "Edit Student")
         infoWindow.resizable(0,0)
         infoWindow.geometry("500x270")
         infoWindow.geometry("+{}+{}".format(positionRight, positionDown))
 
         #Widgets for displaying the entry fields
-        thisFrame = LabelFrame(infoWindow,bg="#faf8f4")
+        thisFrame = LabelFrame(infoWindow,bg="#d1cfe2")
         thisFrame.pack(fill="both", expand=True, padx=10, pady=10)
 
-        headFrame = Label(thisFrame, text="Add Student", font=30,bg="#faf8f4")
+        headFrame = Label(thisFrame, text="Add Student", font=30,bg="#d1cfe2")
         headFrame.grid(row=0, column=0, columnspan=2, padx=10, pady=10, sticky=W+E)
 
-        Label(thisFrame, text="ID #\t:", anchor=W,bg="#faf8f4").grid(row=1,column=0, padx=5, pady=5)
-        Label(thisFrame, text="Name\t:", anchor=W,bg="#faf8f4").grid(row=2,column=0, padx=5,pady=5)
-        Label(thisFrame, text="Course\t:", anchor=W,bg="#faf8f4").grid(row=3,column=0, padx=5, pady=5)
+        Label(thisFrame, text="ID #\t:", anchor=W,bg="#d1cfe2").grid(row=1,column=0, padx=5, pady=5)
+        Label(thisFrame, text="Name\t:", anchor=W,bg="#d1cfe2").grid(row=2,column=0, padx=5,pady=5)
+        Label(thisFrame, text="Course\t:", anchor=W,bg="#d1cfe2").grid(row=3,column=0, padx=5, pady=5)
         ID = Entry(thisFrame, width=66)
         ID.grid(row=1, column=1, pady=5)
         name = Entry(thisFrame, width=66)
@@ -169,10 +169,10 @@ def info_window(command,student):
         course = Entry(thisFrame, width=66)
         course.grid(row=3, column=1, pady=5)
 
-        thisframe = Frame(thisFrame,bg="#faf8f4")
+        thisframe = Frame(thisFrame,bg="#d1cfe2")
         thisframe.grid(row=4, column=0, columnspan=2,pady=5, sticky=W)
-        Label(thisframe, text="Year\t:",bg="#faf8f4").grid(row=0,column=0, padx=5, pady=5)
-        Label(thisframe, text="Gender\t:", anchor=E,bg="#faf8f4").grid(row=0,column=2, padx=5, pady=5)
+        Label(thisframe, text="Year\t:",bg="#d1cfe2").grid(row=0,column=0, padx=5, pady=5)
+        Label(thisframe, text="Gender\t:", anchor=E,bg="#d1cfe2").grid(row=0,column=2, padx=5, pady=5)
         year = StringVar()
         year.set("1st year")
         drop = OptionMenu(thisframe, year, "1st year","2nd year","3rd year","4th year","5th year","6th year","7th year")
@@ -180,8 +180,8 @@ def info_window(command,student):
         drop.config(width=18)
         gender = StringVar()
         gender.set("Male")
-        Radiobutton(thisframe, text="Male",variable=gender, value="Male",bg="#faf8f4").grid(row=0, column=4, padx=10,pady=5)
-        Radiobutton(thisframe, text="Female",variable=gender, value="Female",bg="#faf8f4").grid(row=0, column=5, padx=10,pady=5)
+        Radiobutton(thisframe, text="Male",variable=gender, value="Male",bg="#d1cfe2").grid(row=0, column=4, padx=10,pady=5)
+        Radiobutton(thisframe, text="Female",variable=gender, value="Female",bg="#d1cfe2").grid(row=0, column=5, padx=10,pady=5)
         
         #Sets the entry fields with the current student info
         if (command == "edit"):
@@ -192,12 +192,12 @@ def info_window(command,student):
                 year.set(student['year'])
                 gender.set(student['gender'])
                     
-        tempFrame = Frame(thisFrame,bg="#faf8f4")
+        tempFrame = Frame(thisFrame,bg="#d1cfe2")
         tempFrame.grid(row=5, column=0, columnspan=2)
-        cancel = Button(tempFrame, image=button_cancel, borderwidth=0,bg='#faf8f4', command=infoWindow.destroy)
+        cancel = Button(tempFrame, image=button_cancel, borderwidth=0,bg='#d1cfe2', command=infoWindow.destroy)
         cancel.image=button_cancel
         cancel.grid(row=0,column=0, padx=5, pady=5)
-        add = Button(tempFrame, image=button_add if command=="add" else button_save, borderwidth=0,bg='#faf8f4', command=addStudent)
+        add = Button(tempFrame, image=button_add if command=="add" else button_save, borderwidth=0,bg='#d1cfe2', command=addStudent)
         add.image=button_add if command=="add" else button_save
         add.grid(row=0,column=1, padx=5, pady=5)
 
